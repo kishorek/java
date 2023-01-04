@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_package = "com.kishorek.grpc";
+option java_multiple_files = true;
+
+package checkout;
+
+service Checkout {
+  rpc InitCheckout(CheckoutRequest) returns (CheckoutResponse){}
+}
+
+message Product {
+  string id = 1;
+}
+
+message Order {
+  Product product = 1;
+  int32 qty = 2;
+}
+
+enum PaymentMethod {
+  PAY_CREDIT_CARD = 0;
+  PAY_PAYPAL = 1;
+  PAY_BANK = 2;
+}
+
+message CheckoutRequest{
+  repeated Order order = 1;
+  PaymentMethod paymentMethod = 2;
+  string promoCode = 3;
+}
+
+message CheckoutResponse{
+  double total = 1;
+  double tax = 2;
+  string paymentUpdate = 3;
+}
