@@ -3,7 +3,6 @@ package com.kishorek.concurrency.countdownlatch.tasks;
 import java.util.concurrent.CountDownLatch;
 
 public class EmailTask extends BaseTask{
-
     public EmailTask(CountDownLatch latch){
         super(latch);
     }

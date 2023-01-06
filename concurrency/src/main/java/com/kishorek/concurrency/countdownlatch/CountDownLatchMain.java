@@ -13,7 +13,7 @@ public class CountDownLatchMain {
     public static void main(String[] args) throws InterruptedException {
 
         // Run all the three tasks in threads
-        runAllTasks();
+//        runAllTasks();
 
         // Run all the three tasks in thread with CountDownLatch
         runAllTasksWithCountDownLatch();
