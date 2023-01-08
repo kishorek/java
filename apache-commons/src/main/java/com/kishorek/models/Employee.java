@@ -1,12 +1,13 @@
 package com.kishorek.models;
 
+import java.io.Serializable;
 import java.security.KeyPair;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Serializable {
     private String id;
     private String name;
     private Department dept;
@@ -55,6 +56,11 @@ public class Employee {
         this.dept = dept;
     }
 
+    /*@Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+*/
     @Override
     public String toString() {
         return "Employee{" +

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Employee implements Cloneable{
+public class Employee implements Cloneable {
     private String id;
     private String name;
     private Department dept;
@@ -70,7 +70,9 @@ public class Employee implements Cloneable{
                 ", name='" + name + '\'' +
                 ", dept=" + dept +
                 ", accesses=" + accesses +
-                '}';
+                "}\n" +
+                "Hash: " + System.identityHashCode(this) +
+                " Hex: " + Integer.toHexString(System.identityHashCode(this));
     }
 
     @Override

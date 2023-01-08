@@ -19,23 +19,26 @@ public class CloneMain {
         System.out.println(System.identityHashCode(employee));
         System.out.println(Integer.toHexString(System.identityHashCode(employee)));
 
-        Employee refCopiedEmployee = employee;
+        /*Employee refCopiedEmployee = employee;
         refCopiedEmployee.setId("E102");
         System.out.println(employee);
         System.out.println(refCopiedEmployee);
         System.out.println(refCopiedEmployee.hashCode());
         System.out.println(System.identityHashCode(refCopiedEmployee));
-        System.out.println(Integer.toHexString(System.identityHashCode(refCopiedEmployee)));
+        System.out.println(Integer.toHexString(System.identityHashCode(refCopiedEmployee)));*/
 
         Employee clonedEmployee = (Employee) employee.clone();
         clonedEmployee.setId("E103");
         clonedEmployee.getAccesses().remove(0);
 
         System.out.println(employee);
-        System.out.println(refCopiedEmployee);
+//        System.out.println(refCopiedEmployee);
         System.out.println(clonedEmployee);
         System.out.println(clonedEmployee.hashCode());
         System.out.println(System.identityHashCode(clonedEmployee));
         System.out.println(Integer.toHexString(System.identityHashCode(clonedEmployee)));
+
+        System.out.println(System.identityHashCode(employee.getAccesses()));
+        System.out.println(System.identityHashCode(clonedEmployee.getAccesses()));
     }
 }
