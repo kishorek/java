@@ -1,4 +1,4 @@
-package com.kishorek;
+package com.kishorek.mappers;
 
 import org.mapstruct.Mapping;
 

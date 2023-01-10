@@ -1,14 +1,12 @@
-package com.kishorek;
+package com.kishorek.mappers;
 
-import com.kishorek.models.Address;
-import com.kishorek.models.AddressResponse;
 import com.kishorek.models.User;
 import com.kishorek.models.UserResponse;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
-
-import java.util.UUID;
 
 @Mapper
 public interface UserMapper {
@@ -19,5 +17,9 @@ public interface UserMapper {
     @AuditFieldsMapping
     UserResponse userToUserResponse(User user);
 
-//    default
+    @InheritInverseConfiguration
+    User userResponseToUser(UserResponse userResponse);
+
+    void updateUserFromResponse(UserResponse userResponse, @MappingTarget User user);
+
 }
