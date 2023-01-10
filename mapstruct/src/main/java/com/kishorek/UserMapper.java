@@ -1,15 +1,23 @@
 package com.kishorek;
 
+import com.kishorek.models.Address;
+import com.kishorek.models.AddressResponse;
 import com.kishorek.models.User;
 import com.kishorek.models.UserResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.UUID;
+
 @Mapper
 public interface UserMapper {
     UserMapper mapper = Mappers.getMapper(UserMapper.class);
 
     @Mapping(expression = "java(user.getFirstName() + \" \" + user.getLastName())", target = "displayName")
+    @Mapping(source = "menuVisible", target = "showMenu")
+    @AuditFieldsMapping
     UserResponse userToUserResponse(User user);
+
+//    default
 }

@@ -1,7 +1,12 @@
 package com.kishorek.models;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 
+@Data
+@ToString
 public class UserResponse {
     private String displayName;
 
@@ -11,45 +16,10 @@ public class UserResponse {
 
     private Date lastLoggedOn;
 
-    @Override
-    public String toString() {
-        return "UserResponse{" +
-                "displayName='" + displayName + '\'' +
-                ", token='" + token + '\'' +
-                ", showMenu=" + showMenu +
-                ", lastLoggedOn=" + lastLoggedOn +
-                '}';
-    }
+    private String mainRole;
 
-    public Date getLastLoggedOn() {
-        return lastLoggedOn;
-    }
+    private Date updatedDate;
 
-    public void setLastLoggedOn(Date lastLoggedOn) {
-        this.lastLoggedOn = lastLoggedOn;
-    }
+    private Address address;
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public boolean isShowMenu() {
-        return showMenu;
-    }
-
-    public void setShowMenu(boolean showMenu) {
-        this.showMenu = showMenu;
-    }
 }

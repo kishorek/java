@@ -1,18 +1,23 @@
 package com.kishorek;
 
+import com.kishorek.models.Address;
 import com.kishorek.models.User;
 import com.kishorek.models.UserResponse;
 
-import java.util.Date;
-
 public class Main {
     public static void main(String[] args) {
-        User user = new User();
+        Address address = new Address();
+        address.setAddrLine1("221B Baker Street");
+        address.setAddrLine2("");
+        address.setCity("London");
+
+        User user = new User().setMainRole("Admin");
         user.setEmail("john@example.com");
         user.setFirstName("John");
         user.setLastName("Doe");
-        user.setShowMenu(true);
-        user.setLastLoggedOn(new Date());
+        user.setMenuVisible(true);
+        user.setAddress(address);
+//        user.setLastLoggedOn(new Date());
 
         UserResponse userResponse = UserMapper.mapper.userToUserResponse(user);
         System.out.println(userResponse);
