@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Tester {
     @Test
@@ -30,8 +33,12 @@ public class Tester {
 
         Student selectorSample = Instancio.of(Student.class)
                 .set(Select.field(Student::getName), "Carl")
-                .generate(Select.field(Student::getCgpa), gen -> gen.doubles().range(0.0, 10.0))
+                .generate(Select.field(Student::getCgpa), gen -> gen.doubles().range(0.0, 4.0))
                 .generate(Select.field(Student::getId),gen->gen.text().pattern("LSV#d"))
+                .supply(
+                        Select.field(Student::getSection),
+                        ()-> (char) ThreadLocalRandom.current().nextInt(65,74)
+                )
                 .generate(Select.field(Student::getHouse),gen->gen.oneOf("White","Blue","Red","Green"))
                 .generate(Select.field(Student::getDateOfJoining),gen->gen.temporal().date().past())
                 .create();
