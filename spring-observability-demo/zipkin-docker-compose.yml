@@ -1,0 +1,8 @@
+# docker run -d -p 9411 openzipkin/zipkin:latest
+# From https://github.com/marcingrzejszczak/observability-boot-blog-post/blob/main/docker-compose.yml
+services:
+    zipkin:
+        image: openzipkin/zipkin:latest
+        extra_hosts: ['host.docker.internal:host-gateway']
+        ports:
+            - "9411:9411" # zipkin
