@@ -3,6 +3,26 @@
 services:
     zipkin:
         image: openzipkin/zipkin:latest
-        extra_hosts: ['host.docker.internal:host-gateway']
         ports:
-            - "9411:9411" # zipkin
+            - "9411:9411"
+        command: --logging.level.zipkin2=TRACE
+
+    java-server:
+        build:
+            context: ./spring-micrometer-tracing
+            dockerfile: Dockerfile
+        ports:
+            - 8080:8080
+        environment:
+            - management.zipkin.tracing.endpoint=http://zipkin:9411/api/v2/spans
+            - pyserver.endpoint=http://py-server:5000/
+
+    py-server:
+        build:
+            context: ./python-app
+            dockerfile: Dockerfile
+        ports:
+            - 5000:5000
+        environment:
+            - zipkin_tracing_endpoint=http://zipkin:9411/
+            - PYTHONUNBUFFERED=1

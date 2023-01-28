@@ -47,7 +47,7 @@ public class Main {
         ResponseEntity<String> echoResponse = restTemplate.getForEntity(url+"/echo", String.class);
         log.info(echoResponse.getBody());
 
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:5000/", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(System.getenv("pyserver.endpoint"), String.class);
         return response.getBody();
     }
 

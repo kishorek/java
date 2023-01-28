@@ -1,2 +1,4 @@
 Flask==2.2.2
-Flask-Zipkin==0.0.5
+py-zipkin==1.2.5
+requests
+# Flask-Zipkin==0.0.5
